@@ -1,0 +1,2 @@
+class ModuleScanner:
+    pass

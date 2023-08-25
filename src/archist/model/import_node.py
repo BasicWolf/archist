@@ -1,0 +1,2 @@
+class ImportNode:
+    name: str
