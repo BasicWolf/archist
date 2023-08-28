@@ -10,7 +10,7 @@ class ModuleScanner:
         with path.open() as f:
             ast_body = ast.parse(f.read()).body
 
-        ast_import_nodes = [
+        ast_import_statements = [
             statement
             for statement in ast_body
             if isinstance(statement, (ast.Import, ast.ImportFrom))
@@ -18,7 +18,7 @@ class ModuleScanner:
 
         import_nodes = [
             ImportNode(import_name.name)
-            for ast_import_node in ast_import_nodes
+            for ast_import_node in ast_import_statements
             for import_name in ast_import_node.names
         ]
 
