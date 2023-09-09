@@ -1,13 +1,18 @@
 help:
 	@echo 'Development: '
 	@echo '   make test............run unit and integration tests'
+	@echo '   make mypy............run mypy static types checker'
+
 
 buidl: build
 
-build: test
+build: mypy test
+
+mypy:
+	mypy --check-untyped-defs src
 
 test:
 	PYTHONPATH=src/:./ \
 	pytest
 
-.PHONY: test
+.PHONY: test mypy
