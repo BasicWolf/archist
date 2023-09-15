@@ -35,14 +35,15 @@ def fake_module(fs, fake_package):
     def _fake_module(
         root_path: StrPath,
         package_name: str,
-        module_name: str
+        module_name: str,
+        module_contents: str = ''
     ) -> Path:
         root_path = Path(root_path)
 
         module_file_name = module_name + '.py'
         package_path = fake_package(root_path, package_name)
         module_path = package_path / module_file_name
-        fs.create_file(module_path)
+        fs.create_file(module_path, contents=module_contents)
         return module_path
 
     return _fake_module
