@@ -1,9 +1,13 @@
 from dataclasses import dataclass
-from typing import List
+from pathlib import Path
+from typing import TypeAlias
 
-from archist.model.import_node import ImportNode
+PackageName: TypeAlias = str
+
+IN_BASE_ROOT: PackageName = '.'
 
 
 @dataclass(kw_only=True)
 class ModuleNode:
-    import_nodes: List[ImportNode]
+    path: Path
+    package: PackageName

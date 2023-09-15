@@ -1,12 +1,12 @@
 import os
 from pathlib import Path
 
-from archist.model.module_location import ModuleLocation, PackageName, IN_BASE_ROOT
+from archist.model.module_node import ModuleNode, IN_BASE_ROOT, PackageName
 from archist.port.module_locator import ModuleLocatorPort
 
 
 class ModuleLocatorAdapter(ModuleLocatorPort):
-    def locate_modules(self, base_path: str | Path) -> list[ModuleLocation]:
+    def locate_modules(self, base_path: str | Path) -> list[ModuleNode]:
         base_path = Path(base_path)
 
         found_modules_paths = (
@@ -17,9 +17,9 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
         )
 
         return [
-            ModuleLocation(
-                module_path,
-                self._get_module_package(base_path, module_path)
+            ModuleNode(
+                path=module_path,
+                package=self._get_module_package(base_path, module_path)
             )
             for module_path in found_modules_paths
         ]
