@@ -19,7 +19,7 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
         return [
             ModuleNode(
                 path=module_path,
-                package=self._get_module_package(base_path, module_path)
+                package_name=self._get_module_package(base_path, module_path)
             )
             for module_path in found_modules_paths
         ]

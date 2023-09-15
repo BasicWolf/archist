@@ -10,4 +10,4 @@ IN_BASE_ROOT: PackageName = '.'
 @dataclass(kw_only=True)
 class ModuleNode:
     path: Path
-    package: PackageName
+    package_name: PackageName
