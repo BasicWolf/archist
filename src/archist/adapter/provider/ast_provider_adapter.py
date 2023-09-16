@@ -2,7 +2,7 @@ import ast
 from typing import cast
 
 from archist.model.module_node import ModuleNode
-from archist.port.ast_provider_port import AstProviderPort, ModuleNodeWithAst
+from archist.port.provider.ast_provider_port import AstProviderPort, ModuleNodeWithAst
 
 
 class AstProviderAdapter(AstProviderPort):

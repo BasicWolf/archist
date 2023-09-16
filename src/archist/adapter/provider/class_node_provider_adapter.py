@@ -1,8 +1,8 @@
 import ast
 from typing import cast
 
-from archist.port.ast_provider_port import ModuleNodeWithAst
-from archist.port.class_node_provider_port import ClassNodeProviderPort, ModuleWithClassNodes, ClassNode
+from archist.port.provider.ast_provider_port import ModuleNodeWithAst
+from archist.port.provider.class_node_provider_port import ClassNodeProviderPort, ModuleWithClassNodes, ClassNode
 
 
 class ClassNodeProviderAdapter(ClassNodeProviderPort):

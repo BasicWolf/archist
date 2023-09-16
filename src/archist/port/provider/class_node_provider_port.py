@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Protocol
 
-from archist.port.ast_provider_port import ModuleNodeWithAst
+from archist.port.provider.ast_provider_port import ModuleNodeWithAst
 
 
 @dataclass(kw_only=True)

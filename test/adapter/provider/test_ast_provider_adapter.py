@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from archist.adapter.builtin.ast_provider_adapter import AstProviderAdapter
+from archist.adapter.provider.ast_provider_adapter import AstProviderAdapter
 from archist.model.module_node import ModuleNode
 
 

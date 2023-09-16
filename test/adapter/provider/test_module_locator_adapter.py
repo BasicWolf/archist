@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from archist.adapter.builtin.module_locator_adapter import ModuleLocatorAdapter
+from archist.adapter.provider.module_locator_adapter import ModuleLocatorAdapter
 from archist.model.module_node import ModuleNode
 
 

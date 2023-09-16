@@ -4,10 +4,10 @@ from typing import cast
 
 import pytest
 
-from archist.adapter.builtin.class_node_provider_adapter import ClassNodeProviderAdapter
+from archist.adapter.provider.class_node_provider_adapter import ClassNodeProviderAdapter
 from archist.model.module_node import ModuleNode
-from archist.port.ast_provider_port import ModuleNodeWithAst
-from archist.port.class_node_provider_port import ClassNode
+from archist.port.provider.ast_provider_port import ModuleNodeWithAst
+from archist.port.provider.class_node_provider_port import ClassNode
 
 
 def test_provides_two_class_nodes_when_source_has_two_class_definitions(module_node_with_a_class):
