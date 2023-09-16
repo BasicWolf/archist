@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from archist.model.module_node import ModuleNode, IN_BASE_ROOT, PackageName
-from archist.port.module_locator import ModuleLocatorPort
+from archist.port.module_locator_port import ModuleLocatorPort
 
 
 class ModuleLocatorAdapter(ModuleLocatorPort):
