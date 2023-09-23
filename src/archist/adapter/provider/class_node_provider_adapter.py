@@ -15,7 +15,10 @@ class ClassNodeProviderAdapter(ClassNodeProviderPort):
 
         ret = cast(ModuleWithClassNodes, module_node)
         ret.class_nodes = [
-            ClassNode(name=classdef.name)
+            ClassNode(
+                module_node=module_node,
+                name=classdef.name
+            )
             for classdef in ast_classdef_statements
         ]
         return ret

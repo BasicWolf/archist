@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 from typing import Protocol
 
+from archist.model.module_node import ModuleNode
 from archist.port.provider.ast_provider_port import ModuleNodeWithAst
 
 
 @dataclass(kw_only=True)
 class ClassNode:
     name: str
+    module_node: ModuleNode
 
 
 class ModuleWithClassNodes:
