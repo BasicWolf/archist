@@ -1,6 +1,8 @@
-from typing import Protocol, Any
+from abc import ABC, abstractmethod
+from typing import Any
 
 
-class Predicate(Protocol):
+class Predicate(ABC):
+    @abstractmethod
     def test(self, node: Any) -> bool:
         ...
