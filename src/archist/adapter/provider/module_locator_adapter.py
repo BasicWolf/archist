@@ -6,12 +6,12 @@ from archist.port.provider.module_locator_port import ModuleLocatorPort
 
 
 class ModuleLocatorAdapter(ModuleLocatorPort):
-    def locate_modules(self, base_path: str | Path) -> list[ModuleNode]:
-        base_path = Path(base_path)
+    def locate_modules(self, search_path: str | Path) -> list[ModuleNode]:
+        search_path = Path(search_path)
 
         found_modules_paths = (
             Path(root, file)
-            for root, _, files in os.walk(base_path)
+            for root, _, files in os.walk(search_path)
             for file in files
             if file.endswith('.py')
         )
