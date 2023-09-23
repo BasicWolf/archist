@@ -10,7 +10,7 @@ buidl: build
 build: mypy test
 
 mypy:
-	mypy --check-untyped-defs src
+	mypy --check-untyped-defs src test
 
 test:
 	PYTHONPATH=src/:./ \

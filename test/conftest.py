@@ -21,7 +21,7 @@ def fake_package(fs):
         root_path: StrPath,
         package_name: str
     ) -> Path:
-        sub_package_path = root_path
+        sub_package_path = Path(root_path)
         for sub_package_name in package_name.split('.'):
             sub_package_path = sub_package_path / sub_package_name
             fs.create_file(sub_package_path / '__init__.py')
@@ -55,7 +55,7 @@ def fake_ns_package(fs):
         root_path: StrPath,
         package_name: str
     ) -> Path:
-        sub_package_path = root_path
+        sub_package_path = Path(root_path)
         for sub_package_name in package_name.split('.'):
             sub_package_path = sub_package_path / sub_package_name
             fs.create_dir(sub_package_path)

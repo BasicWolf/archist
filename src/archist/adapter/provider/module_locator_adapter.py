@@ -25,12 +25,12 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
             for module_path in found_modules_paths
         ]
 
-    def _get_package_name(self, base_path: Path, module_path: Path):
+    def _get_package_name(self, base_path: Path, module_path: Path) -> PackageName:
         relative_module_path = module_path.relative_to(base_path)
         if relative_module_path == module_path.name:
             return IN_BASE_ROOT
         else:
             return PackageName(relative_module_path.parent).replace(os.sep, '.')
 
-    def _get_module_name(self, module_path: Path):
+    def _get_module_name(self, module_path: Path) -> str:
         return module_path.stem
