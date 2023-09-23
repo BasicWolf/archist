@@ -17,6 +17,7 @@ def a_module_node(fake_module):
     fake_module('/archist', 'pkg', 'a_module', 'import math')
 
     return ModuleNode(
+        name='a_module',
         path=Path('/archist/pkg/a_module.py'),
         package_name='pkg'
     )

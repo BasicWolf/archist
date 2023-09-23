@@ -18,6 +18,7 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
 
         return [
             ModuleNode(
+                name=self._get_module_name(module_path),
                 path=module_path,
                 package_name=self._get_module_package(base_path, module_path)
             )
@@ -30,3 +31,6 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
             return IN_BASE_ROOT
         else:
             return PackageName(relative_module_path.parent).replace(os.sep, '.')
+
+    def _get_module_name(self, module_path: Path):
+        return module_path.stem

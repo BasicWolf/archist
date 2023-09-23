@@ -18,7 +18,8 @@ def test_module_has_correct_location(fake_module):
 
     assert a_module_node == ModuleNode(
         path=Path('/archist/pkg1/sub2/a_module.py'),
-        package_name='pkg1.sub2'
+        package_name='pkg1.sub2',
+        name='a_module'
     )
 
 
@@ -35,6 +36,7 @@ def test_module_from_namespace_package_has_correct_location(fake_ns_module):
     a_module_node = module_nodes[-1]
 
     assert a_module_node == ModuleNode(
+        name='a_module',
         path=Path('/archist/npkg1/nsub2/a_module.py'),
         package_name='npkg1.nsub2'
     )

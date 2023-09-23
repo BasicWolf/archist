@@ -39,6 +39,7 @@ def module_node_with_a_class(a_module_node) -> ModuleNodeWithAst:
 @pytest.fixture
 def a_module_node() -> ModuleNode:
     return ModuleNode(
+        name='does_not_matter',
         path='/archist/dnm/does_not_matter.py',
         package_name='dnm'
     )
