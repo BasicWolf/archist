@@ -11,5 +11,5 @@ class AstProviderPort(Protocol):
         ...
 
 
-class ModuleNodeWithAst(Protocol):
+class ModuleNodeWithAst(ModuleNode):
     ast: ast.Module
