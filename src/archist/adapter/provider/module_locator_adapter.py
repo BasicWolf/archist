@@ -20,12 +20,12 @@ class ModuleLocatorAdapter(ModuleLocatorPort):
             ModuleNode(
                 name=self._get_module_name(module_path),
                 path=module_path,
-                package_name=self._get_module_package(base_path, module_path)
+                package_name=self._get_package_name(search_path, module_path)
             )
             for module_path in found_modules_paths
         ]
 
-    def _get_module_package(self, base_path: Path, module_path: Path):
+    def _get_package_name(self, base_path: Path, module_path: Path):
         relative_module_path = module_path.relative_to(base_path)
         if relative_module_path == module_path.name:
             return IN_BASE_ROOT
