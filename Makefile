@@ -7,10 +7,13 @@ help:
 
 buidl: build
 
-build: mypy test
+build: mypy pyright test
 
 mypy:
 	mypy --check-untyped-defs src test
+
+pyright:
+	pyright src/ test/
 
 test:
 	PYTHONPATH=src/:./ \
