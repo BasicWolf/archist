@@ -3,6 +3,8 @@ from typing import Union
 
 import pytest
 
+from archist.model.module_node import ModuleNode
+
 FIXTURES_PATH = Path(__file__).parent / 'fixtures'
 
 StrPath = Union[str, Path]
@@ -80,3 +82,12 @@ def fake_ns_module(fs, fake_ns_package):
         return module_path
 
     return _fake_ns_module
+
+
+@pytest.fixture
+def a_module_node() -> ModuleNode:
+    return ModuleNode(
+        name='no_matter',
+        package_name='does.not.matter',
+        path=Path('/archist/does/not/matter/no_matter.py')
+    )
