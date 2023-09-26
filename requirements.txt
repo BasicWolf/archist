@@ -2,4 +2,4 @@
 mypy==1.5.1
 pyfakefs==5.2.4
 pytest==7.4.2
-pyright==1.1.327
+pyright==1.1.328
