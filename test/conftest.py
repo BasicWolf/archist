@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import Union
 
@@ -85,9 +86,31 @@ def fake_ns_module(fs, fake_ns_package):
 
 
 @pytest.fixture
-def a_module_node() -> ModuleNode:
-    return ModuleNode(
-        name='no_matter',
+def a_module_node(module_node) -> ModuleNode:
+    return module_node()
+
+
+@pytest.fixture
+def module_node():
+    def _module_node(
+        module_name='no_matter',
         package_name='does.not.matter',
         path=Path('/archist/does/not/matter/no_matter.py')
-    )
+    ) -> ModuleNode:
+        return ModuleNode(
+            name=module_name,
+            package_name=package_name,
+            path=path
+        )
+    return _module_node
+
+
+@pytest.fixture
+def module_node_in_package(module_node):
+    def _module_node_in_package(package_name='does.not.matter'):
+        package_path = package_name.replace('.', os.sep)
+        return module_node(
+            package_name=package_name,
+            path=Path(package_path)
+        )
+    return _module_node_in_package
