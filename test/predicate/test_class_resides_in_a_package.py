@@ -1,26 +1,26 @@
 import pytest
 
-from archist.adapter.predicate.class_resides_in_a_package import ClassResidesInAPackage
-from archist.port.provider.class_node_provider_port import ClassNode
+from archist.predicate import ClassResidesInAPackagePredicate
+from archist.provider.class_node_provider import ClassNode
 
 
 def test_class_resides_in_a_package(class_in_a_package):
-    assert ClassResidesInAPackage('pkg.sub') \
+    assert ClassResidesInAPackagePredicate('pkg.sub') \
         .test(class_in_a_package('pkg.sub'))
 
 
 def test_class_resides_in_a_sub_package(class_in_a_package):
-    assert ClassResidesInAPackage('pkg') \
+    assert ClassResidesInAPackagePredicate('pkg') \
         .test(class_in_a_package('pkg.sub'))
 
 
 def test_class_in_another_package_does_not_reside_in_this_package(class_in_a_package):
-    assert not ClassResidesInAPackage('topman') \
+    assert not ClassResidesInAPackagePredicate('topman') \
         .test(class_in_a_package('pkg'))
 
 
 def test_class_in_another_sub_package_does_not_reside_in_this_package(class_in_a_package):
-    assert not ClassResidesInAPackage('pkg.sub') \
+    assert not ClassResidesInAPackagePredicate('pkg.sub') \
         .test(class_in_a_package('pkg.sub_other'))
 
 

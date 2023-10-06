@@ -5,19 +5,18 @@ from typing import cast
 
 import pytest
 
-from archist.adapter.provider.class_node_provider_adapter import ClassNodeProviderAdapter
 from archist.model.module_node import ModuleNode
-from archist.port.provider.ast_provider_port import ModuleNodeWithAst
-from archist.port.provider.class_node_provider_port import ClassNode
+from archist.provider.ast_provider import ModuleNodeWithAst
+from archist.provider.class_node_provider import ClassNodeProvider, ClassNode
 
 
 def test_provides_two_class_nodes_when_source_has_two_class_definitions(module_node_with_a_class):
-    module_with_class_nodes = ClassNodeProviderAdapter().process(module_node_with_a_class)
+    module_with_class_nodes = ClassNodeProvider().process(module_node_with_a_class)
     assert len(module_with_class_nodes.class_nodes) == 2
 
 
 def test_provided_class_nodes_have_same_names_as_class_definitions(module_node_with_a_class):
-    module_with_class_nodes = ClassNodeProviderAdapter().process(module_node_with_a_class)
+    module_with_class_nodes = ClassNodeProvider().process(module_node_with_a_class)
     assert ['MyClass', 'MyOtherClass'] == _extract_class_names(module_with_class_nodes.class_nodes)
 
 

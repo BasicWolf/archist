@@ -1,10 +1,9 @@
 import re
 
-from archist.port.predicate.class_has_a_name_like_port import ClassHasANameLikePredicatePort
-from archist.port.provider.class_node_provider_port import ClassNode
+from archist.provider.class_node_provider import ClassNode
 
 
-class ClassHasANameLikePredicate(ClassHasANameLikePredicatePort):
+class ClassHasANameLikePredicate:
     name_pattern: str
 
     def __init__(self, name_pattern: str):

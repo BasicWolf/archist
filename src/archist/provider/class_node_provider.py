@@ -1,11 +1,14 @@
+from __future__ import annotations
+
 import ast
+from dataclasses import dataclass
 from typing import cast
 
-from archist.port.provider.ast_provider_port import ModuleNodeWithAst
-from archist.port.provider.class_node_provider_port import ClassNodeProviderPort, ModuleWithClassNodes, ClassNode
+from archist.model.module_node import ModuleNode
+from archist.provider.ast_provider import ModuleNodeWithAst
 
 
-class ClassNodeProviderAdapter(ClassNodeProviderPort):
+class ClassNodeProvider:
     def process(self, module_node: ModuleNodeWithAst) -> ModuleWithClassNodes:
         ast_classdef_statements = [
             statement
@@ -22,3 +25,13 @@ class ClassNodeProviderAdapter(ClassNodeProviderPort):
             for classdef in ast_classdef_statements
         ]
         return ret
+
+
+class ModuleWithClassNodes:
+    class_nodes: list[ClassNode]
+
+
+@dataclass(kw_only=True)
+class ClassNode:
+    name: str
+    module_node: ModuleNode

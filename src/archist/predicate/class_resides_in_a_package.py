@@ -1,8 +1,7 @@
-from archist.port.predicate.class_resides_in_a_package_port import ClassResidesInAPackagePort
-from archist.port.provider.class_node_provider_port import ClassNode
+from archist.provider.class_node_provider import ClassNode
 
 
-class ClassResidesInAPackage(ClassResidesInAPackagePort):
+class ClassResidesInAPackagePredicate:
     parent_package_name: str
 
     def __init__(self, parent_package_name: str):
