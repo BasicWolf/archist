@@ -5,7 +5,7 @@ from archist.model.module_node import ModuleNode, IN_BASE_ROOT, PackageName
 
 
 class ModuleNodeProvider:
-    def locate_modules(self, search_path: str | Path) -> list[ModuleNode]:
+    def provide_from(self, search_path: str | Path) -> list[ModuleNode]:
         search_path = Path(search_path)
 
         found_modules_paths = (
