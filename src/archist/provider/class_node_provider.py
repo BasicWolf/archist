@@ -9,7 +9,7 @@ from archist.provider.ast_provider import ModuleNodeWithAst
 
 
 class ClassNodeProvider:
-    def provide_from(self, module_node: ModuleNodeWithAst) -> ModuleWithClassNodes:
+    def provide_for(self, module_node: ModuleNodeWithAst) -> ModuleWithClassNodes:
         ast_classdef_statements = [
             statement
             for statement in module_node.ast.body

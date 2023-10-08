@@ -7,7 +7,7 @@ from archist.model.module_node import ModuleNode
 
 
 class AstProvider:
-    def provide_from(self, module_node: ModuleNode) -> ModuleNodeWithAst:
+    def provide_for(self, module_node: ModuleNode):
         with module_node.path.open() as f:
             ast_module = ast.parse(f.read())
             ret = cast(ModuleNodeWithAst, module_node)
