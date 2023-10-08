@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import ast
-from typing import cast
+from typing import cast, Protocol
 
-from archist.model.module_node import ModuleNode
+from archist.model.module_node import ModuleNode, ModuleNodeBase
 
 
 class AstProvider:
@@ -15,5 +15,5 @@ class AstProvider:
             return ret
 
 
-class ModuleNodeWithAst(ModuleNode):
+class ModuleNodeWithAst(ModuleNodeBase, Protocol):
     ast: ast.Module

@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import ast
 from dataclasses import dataclass
-from typing import cast
+from typing import cast, Protocol
 
-from archist.model.module_node import ModuleNode
+from archist.model.module_node import ModuleNodeBase
 from archist.provider.ast_provider import ModuleNodeWithAst
 
 
@@ -27,11 +27,11 @@ class ClassNodeProvider:
         return ret
 
 
-class ModuleWithClassNodes:
+class ModuleWithClassNodes(ModuleNodeBase, Protocol):
     class_nodes: list[ClassNode]
 
 
 @dataclass(kw_only=True)
 class ClassNode:
     name: str
-    module_node: ModuleNode
+    module_node: ModuleNodeWithAst
