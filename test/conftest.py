@@ -53,6 +53,29 @@ def fake_module(fs, fake_package):
 
 
 @pytest.fixture
+def fake_module_node(fake_module):
+    def _fake_module_node(
+            root_path: StrPath,
+            package_name: str,
+            module_name: str,
+            module_contents: str = ''
+    ) -> ModuleNode:
+        fake_module_path = fake_module(
+            root_path,
+            package_name,
+            module_name,
+            module_contents
+        )
+
+        return ModuleNode(
+            name='a_module',
+            path=fake_module_path,
+            package_name=package_name
+        )
+    return _fake_module_node
+
+
+@pytest.fixture
 def fake_ns_package(fs):
     def _fake_ns_package(
         root_path: StrPath,

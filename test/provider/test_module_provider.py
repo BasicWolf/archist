@@ -5,7 +5,6 @@ from typing import cast
 
 import pytest
 
-from archist.model.module_node import ModuleNode
 from archist.provider.module_provider import ModuleProvider, ProvidedModuleNode
 
 
@@ -34,28 +33,16 @@ def test_provides_module_node_with_class_nodes(
 
 
 @pytest.fixture
-def a_module_with_a_single_import(fake_module):
-    fake_module('/single-import', 'pkg', 'a_module', 'import math')
-
-    return ModuleNode(
-        name='a_module',
-        path=Path('/single-import/pkg/a_module.py'),
-        package_name='pkg'
-    )
+def a_module_with_a_single_import(fake_module_node):
+    return fake_module_node('/single-import', 'pkg', 'a_module', 'import math')
 
 
 @pytest.fixture
-def a_module_with_my_class(fake_module):
-    fake_module('/my-class', 'pkg', 'a_module', textwrap.dedent('''\
+def a_module_with_my_class(fake_module_node):
+    return fake_module_node('/my-class', 'pkg', 'a_module', textwrap.dedent('''\
     class MyClass:
         ...
     '''))
-
-    return ModuleNode(
-        name='a_module',
-        path=Path('/my-class/pkg/a_module.py'),
-        package_name='pkg'
-    )
 
 
 @pytest.fixture
