@@ -66,6 +66,7 @@ def get_import_name():
         return imported_names[0].name
     return _get_import_name
 
+
 @pytest.fixture
 def get_class_name():
     def _get_class_name(pmn: ProvidedModuleNode) -> str:

@@ -13,4 +13,3 @@ class ClassResidesInAPackagePredicate:
         return all(cls_package == test_package
                    for (cls_package, test_package) in
                    zip(class_package_stack, test_package_stack))
-
