@@ -1,16 +1,16 @@
 import pytest
 
-from archist.predicate import ClassHasANameLikePredicate
+from archist.predicate import HaveANameLikePredicate
 from archist.provider.class_node_provider import ClassNode
 
 
 def test_class_name_corresponds_to_predicate_pattern(class_node):
-    assert ClassHasANameLikePredicate('^.*Figure') \
+    assert HaveANameLikePredicate('^.*Figure') \
         .test(class_node('MyFigure'))
 
 
 def test_class_name_does_not_correspond_to_predicate_pattern(class_node):
-    assert not ClassHasANameLikePredicate('^.*Spot') \
+    assert not HaveANameLikePredicate('^.*Spot') \
         .test(class_node('MyFigure'))
 
 

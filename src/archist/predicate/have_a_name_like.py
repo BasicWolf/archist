@@ -3,7 +3,7 @@ import re
 from archist.provider.class_node_provider import ClassNode
 
 
-class ClassHasANameLikePredicate:
+class HaveANameLikePredicate:
     name_pattern: str
 
     def __init__(self, name_pattern: str):
