@@ -1,7 +1,7 @@
 from archist.provider.class_node_provider import ClassNode
 
 
-class ClassResidesInAPackagePredicate:
+class ResideInAPackagePredicate:
     parent_package_name: str
 
     def __init__(self, parent_package_name: str):

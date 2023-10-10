@@ -1,7 +1,7 @@
-from .class_resides_in_a_package import ClassResidesInAPackagePredicate
 from .have_a_name_like import HaveANameLikePredicate
+from .reside_in_a_package import ResideInAPackagePredicate
 
 __all__ = [
     'HaveANameLikePredicate',
-    'ClassResidesInAPackagePredicate'
+    'ResideInAPackagePredicate'
 ]
