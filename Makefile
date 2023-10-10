@@ -22,6 +22,6 @@ pyright:
 
 test:
 	PYTHONPATH=src/:./ \
-	pytest
+	pytest test/
 
 .PHONY: test mypy flake8
