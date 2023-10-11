@@ -5,7 +5,7 @@ from typing import cast
 
 import pytest
 
-from archist.provider.module_provider import ModuleProvider, ProvidedModuleNode
+from archist.provider.module_provider import ModuleProvider, Module
 
 
 def test_provides_module_node(a_module_with_a_single_import):
@@ -47,7 +47,7 @@ def a_module_with_my_class(fake_module_node):
 
 @pytest.fixture
 def get_import_name():
-    def _get_import_name(pmn: ProvidedModuleNode) -> str:
+    def _get_import_name(pmn: Module) -> str:
         ast_import_statement = cast(ast.Import, pmn.ast.body[0])
         imported_names = ast_import_statement.names
         return imported_names[0].name
@@ -56,7 +56,7 @@ def get_import_name():
 
 @pytest.fixture
 def get_class_name():
-    def _get_class_name(pmn: ProvidedModuleNode) -> str:
+    def _get_class_name(pmn: Module) -> str:
         return pmn.class_nodes[0].name
 
     return _get_class_name

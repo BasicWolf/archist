@@ -7,14 +7,14 @@ PackageName: TypeAlias = str
 IN_BASE_ROOT: PackageName = '.'
 
 
-class ModuleNodeBase(Protocol):
+class BasicModuleProtocol(Protocol):
     name: str
     path: Path
     package_name: PackageName
 
 
 @dataclass(kw_only=True)
-class ModuleNode(ModuleNodeBase):
+class BasicModule(BasicModuleProtocol):
     name: str
     path: Path
     package_name: PackageName

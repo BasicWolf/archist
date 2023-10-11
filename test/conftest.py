@@ -4,7 +4,7 @@ from typing import Union
 
 import pytest
 
-from archist.model.module_node import ModuleNode
+from archist.model.basic_module import BasicModule
 
 FIXTURES_PATH = Path(__file__).parent / 'fixtures'
 
@@ -59,7 +59,7 @@ def fake_module_node(fake_module):
             package_name: str,
             module_name: str,
             module_contents: str = ''
-    ) -> ModuleNode:
+    ) -> BasicModule:
         fake_module_path = fake_module(
             root_path,
             package_name,
@@ -67,7 +67,7 @@ def fake_module_node(fake_module):
             module_contents
         )
 
-        return ModuleNode(
+        return BasicModule(
             name='a_module',
             path=fake_module_path,
             package_name=package_name
@@ -109,7 +109,7 @@ def fake_ns_module(fs, fake_ns_package):
 
 
 @pytest.fixture
-def a_module_node(module_node) -> ModuleNode:
+def a_module_node(module_node) -> BasicModule:
     return module_node()
 
 
@@ -119,8 +119,8 @@ def module_node():
         module_name='no_matter',
         package_name='does.not.matter',
         path=Path('/archist/does/not/matter/no_matter.py')
-    ) -> ModuleNode:
-        return ModuleNode(
+    ) -> BasicModule:
+        return BasicModule(
             name=module_name,
             package_name=package_name,
             path=path

@@ -1,11 +1,11 @@
 import os
 from pathlib import Path
 
-from archist.model.module_node import ModuleNode, IN_BASE_ROOT, PackageName
+from archist.model.basic_module import BasicModule, IN_BASE_ROOT, PackageName
 
 
-class ModuleNodeProvider:
-    def provide_from(self, search_path: str | Path) -> list[ModuleNode]:
+class BasicModuleProvider:
+    def provide_from(self, search_path: str | Path) -> list[BasicModule]:
         search_path = Path(search_path)
 
         found_modules_paths = (
@@ -16,7 +16,7 @@ class ModuleNodeProvider:
         )
 
         return [
-            ModuleNode(
+            BasicModule(
                 name=self._get_module_name(module_path),
                 path=module_path,
                 package_name=self._get_package_name(search_path, module_path)

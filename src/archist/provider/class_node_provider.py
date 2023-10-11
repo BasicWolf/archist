@@ -4,22 +4,22 @@ import ast
 from dataclasses import dataclass
 from typing import cast, Protocol
 
-from archist.model.module_node import ModuleNodeBase
-from archist.provider.ast_provider import ModuleNodeWithAst
+from archist.model.basic_module import BasicModuleProtocol
+from archist.provider.ast_provider import ModuleWithAst
 
 
 class ClassNodeProvider:
-    def provide_for(self, module_node: ModuleNodeWithAst) -> ModuleWithClassNodes:
+    def provide_for(self, module: ModuleWithAst) -> ModuleWithClassNodes:
         ast_classdef_statements = [
             statement
-            for statement in module_node.ast.body
+            for statement in module.ast.body
             if isinstance(statement, ast.ClassDef)
         ]
 
-        ret = cast(ModuleWithClassNodes, module_node)
+        ret = cast(ModuleWithClassNodes, module)
         ret.class_nodes = [
             ClassNode(
-                module_node=module_node,
+                module=module,
                 name=classdef.name
             )
             for classdef in ast_classdef_statements
@@ -27,11 +27,11 @@ class ClassNodeProvider:
         return ret
 
 
-class ModuleWithClassNodes(ModuleNodeBase, Protocol):
+class ModuleWithClassNodes(BasicModuleProtocol, Protocol):
     class_nodes: list[ClassNode]
 
 
 @dataclass(kw_only=True)
 class ClassNode:
     name: str
-    module_node: ModuleNodeWithAst
+    module: ModuleWithAst

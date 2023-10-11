@@ -5,8 +5,8 @@ from typing import cast
 
 import pytest
 
-from archist.model.module_node import ModuleNode
-from archist.provider.ast_provider import ModuleNodeWithAst
+from archist.model.basic_module import BasicModule
+from archist.provider.ast_provider import ModuleWithAst
 from archist.provider.class_node_provider import ClassNodeProvider, ClassNode
 
 
@@ -31,7 +31,7 @@ def _extract_class_names(class_nodes: list[ClassNode]) -> list[str]:
 
 
 @pytest.fixture
-def module_node_with_a_class(a_module_node) -> ModuleNodeWithAst:
+def module_node_with_a_class(a_module_node) -> ModuleWithAst:
     a_module_node.ast = ast.parse(textwrap.dedent("""\
     class MyClass:
         ...
@@ -39,12 +39,12 @@ def module_node_with_a_class(a_module_node) -> ModuleNodeWithAst:
     class MyOtherClass:
         ...
     """))
-    return cast(ModuleNodeWithAst, a_module_node)
+    return cast(ModuleWithAst, a_module_node)
 
 
 @pytest.fixture
-def a_module_node() -> ModuleNode:
-    return ModuleNode(
+def a_module_node() -> BasicModule:
+    return BasicModule(
         name='does_not_matter',
         path=Path('/archist/dnm/does_not_matter.py'),
         package_name='dnm'

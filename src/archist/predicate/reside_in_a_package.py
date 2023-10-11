@@ -8,7 +8,7 @@ class ResideInAPackagePredicate:
         self.parent_package_name = parent_package_name
 
     def test(self, class_node: ClassNode) -> bool:
-        class_package_stack = class_node.module_node.package_name.split('.')
+        class_package_stack = class_node.module.package_name.split('.')
         test_package_stack = self.parent_package_name.split('.')
         return all(cls_package == test_package
                    for (cls_package, test_package) in

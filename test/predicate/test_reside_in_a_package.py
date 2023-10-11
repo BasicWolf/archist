@@ -29,6 +29,6 @@ def class_in_a_package(module_node_in_package):
     def _class_in_a_package(package_name: str) -> ClassNode:
         return ClassNode(
             name='DoesNotMatter',
-            module_node=module_node_in_package(package_name)
+            module=module_node_in_package(package_name)
         )
     return _class_in_a_package

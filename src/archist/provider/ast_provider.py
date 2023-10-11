@@ -3,17 +3,17 @@ from __future__ import annotations
 import ast
 from typing import cast, Protocol
 
-from archist.model.module_node import ModuleNode, ModuleNodeBase
+from archist.model.basic_module import BasicModule, BasicModuleProtocol
 
 
 class AstProvider:
-    def provide_for(self, module_node: ModuleNode):
-        with module_node.path.open() as f:
+    def provide_for(self, basic_module: BasicModule):
+        with basic_module.path.open() as f:
             ast_module = ast.parse(f.read())
-            ret = cast(ModuleNodeWithAst, module_node)
+            ret = cast(ModuleWithAst, basic_module)
             ret.ast = ast_module
             return ret
 
 
-class ModuleNodeWithAst(ModuleNodeBase, Protocol):
+class ModuleWithAst(BasicModuleProtocol, Protocol):
     ast: ast.Module

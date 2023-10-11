@@ -19,7 +19,7 @@ def class_node(a_module_node):
     def _make_a_class_node(name: str):
         return ClassNode(
             name=name,
-            module_node=a_module_node
+            module=a_module_node
         )
 
     return _make_a_class_node
