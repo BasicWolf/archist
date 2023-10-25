@@ -28,9 +28,9 @@ def with_fake_package(fs):
 @pytest.fixture
 def with_fake_module(fs, with_fake_package):
     def _with_fake_module(
-        root_path: StrPath,
-        package_name: str,
-        module_name: str,
+        root_path: StrPath = '/',
+        package_name: str = 'no_matter',
+        module_name: str = 'no_matter',
         module_contents: str = ''
     ) -> Path:
         root_path = Path(root_path)
