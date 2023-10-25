@@ -15,11 +15,11 @@ def test_class_name_does_not_correspond_to_predicate_pattern(class_node):
 
 
 @pytest.fixture
-def class_node(a_module_node):
+def class_node(a_basic_module):
     def _make_a_class_node(name: str):
         return ClassNode(
             name=name,
-            module=a_module_node
+            module=a_basic_module
         )
 
     return _make_a_class_node

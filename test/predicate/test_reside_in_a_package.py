@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 import pytest
 
 from archist.predicate import ResideInAPackagePredicate
@@ -25,10 +28,15 @@ def test_class_in_another_sub_package_does_not_reside_in_this_package(class_in_a
 
 
 @pytest.fixture
-def class_in_a_package(module_node_in_package):
+def class_in_a_package(build_basic_module):
     def _class_in_a_package(package_name: str) -> ClassNode:
+        package_path = package_name.replace('.', os.sep)
+
         return ClassNode(
             name='DoesNotMatter',
-            module=module_node_in_package(package_name)
+            module=build_basic_module(
+                package_name=package_name,
+                path=Path('/does/not/matter') / package_path / 'no_matter.py'
+            )
         )
     return _class_in_a_package
