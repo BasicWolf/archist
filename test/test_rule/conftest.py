@@ -5,7 +5,7 @@ import pytest
 from archist.provider.module_provider import Module
 from archist.rule.implication import Implication
 from archist.rule.source.source import Source
-from archist.rule.validator.validator import Validator
+from archist.rule.test_rule import TestRule, TestResult, Ok
 
 
 @pytest.fixture
@@ -15,12 +15,13 @@ def dummy_source():
 
 @pytest.fixture
 def dummy_validator():
-    return DummyValidator
+    return DummyValidatorRule
 
 
-class DummyValidator(Validator):
-    def validate(self, node) -> bool:
-        return True
+class DummyValidatorRule(TestRule):
+
+    def test(self, node) -> TestResult:
+        return Ok()
 
 
 class DummySource(Source):
@@ -28,7 +29,7 @@ class DummySource(Source):
     def sourced_from(modules: Iterable[Module]) -> Any:
         return DummySource()
 
-    def should(self, validator: Validator) -> Implication:
+    def should(self, validator: TestRule) -> Implication:
         return Implication(self, validator)
 
     def __iter__(self):

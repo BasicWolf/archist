@@ -6,7 +6,7 @@ from archist.provider.class_node_provider import ClassNode
 from archist.provider.module_provider import Module
 from archist.rule.implication import Implication
 from archist.rule.source.source import Source
-from archist.rule.validator.validator import Validator
+from archist.rule.test_rule import TestRule
 
 
 class Classes(Source):
@@ -21,7 +21,7 @@ class Classes(Source):
     def __iter__(self):
         return iter(self.class_nodes)
 
-    def should(self, validator: Validator) -> Implication:
+    def should(self, validator: TestRule) -> Implication:
         return Implication(self, validator)
 
     @staticmethod
