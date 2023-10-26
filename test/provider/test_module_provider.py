@@ -33,15 +33,15 @@ def test_provides_module_node_with_class_nodes(
 
 
 @pytest.fixture
-def a_module_with_a_single_import(basic_module_with_fake_module):
-    return basic_module_with_fake_module(
+def a_module_with_a_single_import(basic_module_from_fake_python_module):
+    return basic_module_from_fake_python_module(
         '/single-import', 'pkg', 'a_module', 'import math'
     )
 
 
 @pytest.fixture
-def a_module_with_my_class(basic_module_with_fake_module):
-    return basic_module_with_fake_module(
+def a_module_with_my_class(basic_module_from_fake_python_module):
+    return basic_module_from_fake_python_module(
         '/my-class', 'pkg', 'a_module',  textwrap.dedent('''\
             class MyClass:
                 ...

@@ -12,8 +12,8 @@ def test_classes_source_yields_class_nodes(a_module_with_two_classes):
 
 
 @pytest.fixture
-def a_module_with_two_classes(with_fake_module):
-    with_fake_module(root_path='/my-class', module_contents=textwrap.dedent('''
+def a_module_with_two_classes(with_fake_python_module):
+    with_fake_python_module(root_path='/my-class', module_contents=textwrap.dedent('''
         class MyClass:
             ...
 
