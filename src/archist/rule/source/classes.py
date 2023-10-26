@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from typing import Iterable
+from collections.abc import Iterable
 
 from archist.provider.class_node_provider import ClassNode
 from archist.provider.module_provider import Module
+from archist.rule.source.abstract_source import AbstractSource
 
 
-class Classes:
+class Classes(AbstractSource):
     class_nodes: list[ClassNode]
 
     def __init__(self, class_nodes: list[ClassNode] | None = None):
