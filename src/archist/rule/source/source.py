@@ -4,7 +4,7 @@ from typing import Any
 
 from archist.provider.module_provider import Module
 from archist.rule.implication import Implication
-from archist.rule.validation.validator import Validator
+from archist.rule.validator.validator import Validator
 
 
 class Source(Iterable, ABC):

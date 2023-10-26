@@ -5,7 +5,7 @@ import pytest
 from archist.provider.module_provider import Module
 from archist.rule.implication import Implication
 from archist.rule.source.source import Source
-from archist.rule.validation.validator import Validator
+from archist.rule.validator.validator import Validator
 
 
 @pytest.fixture

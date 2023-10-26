@@ -4,7 +4,7 @@ import typing
 from collections.abc import Iterable
 
 from archist.provider.module_provider import Module
-from archist.rule.validation.validator import Validator
+from archist.rule.validator.validator import Validator
 
 if typing.TYPE_CHECKING:
     from archist.rule.source.source import Source
