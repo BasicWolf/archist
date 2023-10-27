@@ -4,14 +4,14 @@ import typing
 from collections.abc import Iterable
 
 from archist.provider.module_provider import Module
-from archist.rule.test_rule import TestRule
+from archist.rule.test_rule import ExpectationRule
 
 if typing.TYPE_CHECKING:
     from archist.rule.source.source import Source
 
 
 class Implication:
-    def __init__(self, source: Source, validator: TestRule):
+    def __init__(self, source: Source, validator: ExpectationRule):
         self.source = source
         self.validator = validator
 

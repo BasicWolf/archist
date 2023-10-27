@@ -4,7 +4,7 @@ from typing import Any
 
 from archist.provider.module_provider import Module
 from archist.rule.implication import Implication
-from archist.rule.test_rule import TestRule
+from archist.rule.test_rule import ExpectationRule
 
 
 class Source(Iterable, ABC):
@@ -14,5 +14,5 @@ class Source(Iterable, ABC):
         ...
 
     @abstractmethod
-    def should(self, validator: TestRule) -> Implication:
+    def should(self, validator: ExpectationRule) -> Implication:
         ...

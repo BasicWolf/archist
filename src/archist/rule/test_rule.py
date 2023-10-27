@@ -4,13 +4,13 @@ from abc import abstractmethod, ABC
 from collections.abc import Iterable
 
 
-class TestRule(ABC):
+class ExpectationRule(ABC):
     @abstractmethod
-    def test(self, node) -> TestResult:
+    def test(self, node) -> ExpectationRuleResult:
         ...
 
 
-class TestResult:
+class ExpectationRuleResult:
     success: bool
     reasons: Iterable[str]
 
@@ -19,11 +19,11 @@ class TestResult:
         self.reasons = reasons
 
 
-class Ok(TestResult):
+class Ok(ExpectationRuleResult):
     def __init__(self, reasons: Iterable[str] = ()):
         super().__init__(True, reasons)
 
 
-class Fail(TestResult):
+class Fail(ExpectationRuleResult):
     def __init__(self, reasons: Iterable[str] = ()):
         super().__init__(False, reasons)

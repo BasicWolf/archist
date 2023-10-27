@@ -2,16 +2,16 @@ from typing import Iterable
 
 from archist.predicate.be import TestFunctionType, BePredicate
 from archist.rule.filter_rule import FilterRule
-from archist.rule.test_rule import TestRule, TestResult, Fail, Ok
+from archist.rule.test_rule import ExpectationRule, ExpectationRuleResult, Fail, Ok
 
 
-class BeRule(FilterRule, TestRule):
+class BeRule(FilterRule, ExpectationRule):
     be_predicate: BePredicate
 
     def __init__(self, test_function: TestFunctionType):
         self.be_predicate = BePredicate(test_function)
 
-    def test(self, node) -> TestResult:
+    def test(self, node) -> ExpectationRuleResult:
         if not self.be_predicate.test(node):
             return Fail()
         return Ok()
