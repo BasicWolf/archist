@@ -4,9 +4,9 @@ from collections.abc import Iterable
 
 from archist.provider.class_node_provider import ClassNode
 from archist.provider.module_provider import Module
+from archist.rule.evaluation_rule import ExpectationRule
 from archist.rule.implication import Implication
 from archist.rule.source.source import Source
-from archist.rule.test_rule import ExpectationRule
 
 
 class Classes(Source):
@@ -24,8 +24,7 @@ class Classes(Source):
     def should(self, validator: ExpectationRule) -> Implication:
         return Implication(self, validator)
 
-    @staticmethod
-    def sourced_from(modules: Iterable[Module]) -> Classes:
+    def sourced_from(self, modules: Iterable[Module]) -> Classes:
         class_nodes = [
             class_node
             for module in modules

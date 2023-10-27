@@ -1,8 +1,26 @@
+from archist.rule.be import be
+from archist.rule.evaluation_rule import Fail, Ok
 from archist.rule.implication import Implication
 
 
-def test_implication_successfully_evaluates_with_dummy_source_and_validator(
+def test_implication_evaluates_successfully(
     dummy_source,
-    dummy_validator
+    build_basic_module
 ):
-    assert Implication(dummy_source, dummy_validator).evaluate([])
+    assert Implication(
+        dummy_source,
+        be(lambda module: module.name.startswith('mod_'))
+    ).evaluate([
+        build_basic_module(module_name='mod_first'),
+        build_basic_module(module_name='mod_second')
+    ]) == Ok()
+
+
+def test_implication_fails_with_reasons(
+    dummy_source,
+    a_basic_module
+):
+    assert Implication(
+        dummy_source,
+        be(lambda _: False)
+    ).evaluate([a_basic_module]) == Fail()
