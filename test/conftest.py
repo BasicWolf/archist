@@ -11,8 +11,8 @@ StrPath = Union[str, Path]
 
 
 @pytest.fixture
-def with_fake_package(fs):
-    def _with_fake_package(
+def with_fake_python_package(fs):
+    def _with_fake_python_package(
         root_path: StrPath,
         package_name: str
     ) -> Path:
@@ -22,12 +22,12 @@ def with_fake_package(fs):
             fs.create_file(sub_package_path / '__init__.py')
         return sub_package_path
 
-    return _with_fake_package
+    return _with_fake_python_package
 
 
 @pytest.fixture
-def with_fake_module(fs, with_fake_package):
-    def _with_fake_module(
+def with_fake_python_module(fs, with_fake_python_package):
+    def _with_fake_python_module(
         root_path: StrPath,
         package_name: str,
         module_name: str,
@@ -36,17 +36,17 @@ def with_fake_module(fs, with_fake_package):
         root_path = Path(root_path)
 
         module_file_name = module_name + '.py'
-        package_path = with_fake_package(root_path, package_name)
+        package_path = with_fake_python_package(root_path, package_name)
         module_path = package_path / module_file_name
         fs.create_file(module_path, contents=module_contents)
         return module_path
 
-    return _with_fake_module
+    return _with_fake_python_module
 
 
 @pytest.fixture
-def with_fake_ns_package(fs):
-    def _with_fake_ns_package(
+def with_fake_python_namespace_package(fs):
+    def _with_fake_python_namespace_package(
         root_path: StrPath,
         package_name: str
     ) -> Path:
@@ -56,12 +56,12 @@ def with_fake_ns_package(fs):
             fs.create_dir(sub_package_path)
         return sub_package_path
 
-    return _with_fake_ns_package
+    return _with_fake_python_namespace_package
 
 
 @pytest.fixture
-def with_fake_ns_module(fs, with_fake_ns_package):
-    def _with_fake_ns_module(
+def with_fake_python_namespace_module(fs, with_fake_python_namespace_package):
+    def _with_fake_python_namespace_module(
         root_path: StrPath,
         package_name: str,
         module_name: str
@@ -69,23 +69,23 @@ def with_fake_ns_module(fs, with_fake_ns_package):
         root_path = Path(root_path)
 
         module_file_name = module_name + '.py'
-        package_path = with_fake_ns_package(root_path, package_name)
+        package_path = with_fake_python_namespace_package(root_path, package_name)
         module_path = package_path / module_file_name
         fs.create_file(module_path)
         return module_path
 
-    return _with_fake_ns_module
+    return _with_fake_python_namespace_module
 
 
 @pytest.fixture
-def basic_module_with_fake_module(with_fake_module):
-    def _basic_module_with_fake_module(
+def basic_module_from_fake_python_module(with_fake_python_module):
+    def _basic_module_from_fake_python_module(
             root_path: StrPath,
             package_name: str,
             module_name: str,
             module_contents: str = ''
     ) -> BasicModule:
-        fake_module_path = with_fake_module(
+        fake_module_path = with_fake_python_module(
             root_path,
             package_name,
             module_name,
@@ -97,7 +97,7 @@ def basic_module_with_fake_module(with_fake_module):
             path=fake_module_path,
             package_name=package_name
         )
-    return _basic_module_with_fake_module
+    return _basic_module_from_fake_python_module
 
 
 @pytest.fixture

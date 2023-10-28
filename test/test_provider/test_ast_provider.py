@@ -11,5 +11,7 @@ def test_provides_ast_for_a_module_node(a_basic_module):
 
 
 @pytest.fixture
-def a_basic_module(basic_module_with_fake_module):
-    return basic_module_with_fake_module('/archist', 'pkg', 'a_module', 'import math')
+def a_basic_module(basic_module_from_fake_python_module):
+    return basic_module_from_fake_python_module(
+        '/archist', 'pkg', 'a_module', 'import math'
+    )
