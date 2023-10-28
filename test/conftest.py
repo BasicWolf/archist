@@ -62,16 +62,17 @@ def with_fake_python_namespace_package(fs):
 @pytest.fixture
 def with_fake_python_namespace_module(fs, with_fake_python_namespace_package):
     def _with_fake_python_namespace_module(
-        root_path: StrPath,
-        package_name: str,
-        module_name: str
+        root_path: StrPath = '/no_matter',
+        package_name: str = 'does.not.matter',
+        module_name: str = 'no_matter',
+        module_contents: str = '',
     ) -> Path:
         root_path = Path(root_path)
 
         module_file_name = module_name + '.py'
         package_path = with_fake_python_namespace_package(root_path, package_name)
         module_path = package_path / module_file_name
-        fs.create_file(module_path)
+        fs.create_file(module_path, contents=module_contents)
         return module_path
 
     return _with_fake_python_namespace_module
