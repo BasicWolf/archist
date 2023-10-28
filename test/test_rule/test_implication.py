@@ -20,7 +20,10 @@ def test_implication_fails_with_reasons(
     dummy_source,
     a_basic_module
 ):
-    assert Implication(
+    failed_implication = Implication(
         dummy_source,
         be(lambda _: False)
-    ).evaluate([a_basic_module]) == Fail()
+    ).evaluate([a_basic_module])
+
+    assert isinstance(failed_implication, Fail)
+    assert "was not as expected" in failed_implication.reason

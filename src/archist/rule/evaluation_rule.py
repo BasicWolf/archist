@@ -39,6 +39,3 @@ class Fail(EvaluationResult):
 
     def __repr__(self):
         return f"Fail(\"{self.reason}\")"
-
-    def __eq__(self, other):
-        return isinstance(other, Fail)
