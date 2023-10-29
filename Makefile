@@ -1,13 +1,14 @@
 help:
 	@echo 'Development: '
-	@echo '   make build...........run static analyzers and tests'
+	@echo '   make build...........run all static analyzers and tests'
+	@echo '   make buidl...........run essential static analyzers and tests'
 	@echo '   make flake8..........run flake8 static code analyzer'
 	@echo '   make test............run unit and integration tests'
 	@echo '   make mypy............run mypy static type checker'
 	@echo '   make pyright.........run pyright static type checker'
 
 
-buidl: build
+buidl: flake8 mypy test
 
 build: flake8 mypy pyright test
 
