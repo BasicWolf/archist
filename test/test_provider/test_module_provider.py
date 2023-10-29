@@ -5,7 +5,7 @@ from typing import cast
 
 import pytest
 
-from archist.provider.module_provider import ModuleProvider, Module
+from archist.provider.module import ModuleProvider, Module
 
 
 def test_provides_module_node(a_module_with_a_single_import):

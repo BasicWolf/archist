@@ -2,9 +2,9 @@ from pathlib import Path
 from typing import Protocol, cast
 
 from archist.model.basic_module import BasicModuleProtocol
-from archist.provider.ast_provider import AstProvider, ModuleWithAst
-from archist.provider.basic_module_provider import BasicModuleProvider
-from archist.provider.class_node_provider import ModuleWithClassNodes, ClassNodeProvider
+from archist.provider.ast import AstProvider, ModuleWithAst
+from archist.provider.basic_module import BasicModuleProvider
+from archist.provider.class_node import ModuleWithClassNodes, ClassNodeProvider
 
 
 class Module(

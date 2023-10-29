@@ -1,7 +1,7 @@
 import pytest
 
 from archist.predicate import HaveANameLikePredicate
-from archist.provider.class_node_provider import ClassNode
+from archist.provider.class_node import ClassNode
 
 
 def test_class_name_corresponds_to_predicate_pattern(class_node):

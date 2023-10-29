@@ -2,7 +2,7 @@ import ast
 
 import pytest
 
-from archist.provider.ast_provider import AstProvider
+from archist.provider.ast import AstProvider
 
 
 def test_provides_ast_for_a_module_node(a_basic_module):

@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from archist.model.basic_module import BasicModule
-from archist.provider.basic_module_provider import BasicModuleProvider
+from archist.provider.basic_module import BasicModuleProvider
 
 
 def test_locates_modules_in_package(with_fake_python_module):

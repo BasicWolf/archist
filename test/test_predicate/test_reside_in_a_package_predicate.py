@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from archist.predicate import ResideInAPackagePredicate
-from archist.provider.class_node_provider import ClassNode
+from archist.provider.class_node import ClassNode
 
 
 def test_class_resides_in_a_package(class_in_a_package):

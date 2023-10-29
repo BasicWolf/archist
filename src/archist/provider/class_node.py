@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import cast, Protocol
 
 from archist.model.basic_module import BasicModuleProtocol
-from archist.provider.ast_provider import ModuleWithAst
+from archist.provider.ast import ModuleWithAst
 
 
 class ClassNodeProvider:

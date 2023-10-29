@@ -4,8 +4,8 @@ from typing import cast
 
 import pytest
 
-from archist.provider.ast_provider import ModuleWithAst
-from archist.provider.class_node_provider import ClassNodeProvider, ClassNode
+from archist.provider.ast import ModuleWithAst
+from archist.provider.class_node import ClassNodeProvider, ClassNode
 
 
 def test_provides_two_class_nodes_when_source_has_two_class_definitions(
@@ -36,7 +36,7 @@ def module_node_with_two_classes_in_ast(a_basic_module) -> ModuleWithAst:
     a_basic_module.ast = ast.parse(textwrap.dedent("""
         class MyClass:
             ...
-    
+
         class MyOtherClass:
             ...
     """))

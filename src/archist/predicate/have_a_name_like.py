@@ -1,6 +1,6 @@
 import re
 
-from archist.provider.class_node_provider import ClassNode
+from archist.provider.class_node import ClassNode
 
 
 class HaveANameLikePredicate:
