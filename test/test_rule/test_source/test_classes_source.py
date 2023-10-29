@@ -5,18 +5,14 @@ import pytest
 from archist.provider.class_node import ClassNode
 from archist.provider.module import ModuleProvider
 from archist.rule.source.classes import classes
+from helper import extracting_names_from
 
 
 def test_classes_source_yields_class_nodes(a_module_with_two_classes):
     classes_source = classes.sourced_from([a_module_with_two_classes])
     class_nodes: list[ClassNode] = list(classes_source)
 
-    assert ['MyClass', 'OtherClass'] \
-           == extracting_class_names_from(class_nodes)
-
-
-def extracting_class_names_from(class_nodes: list[ClassNode]) -> list[str]:
-    return [class_node.name for class_node in class_nodes]
+    assert extracting_names_from(class_nodes) == ['MyClass', 'OtherClass']
 
 
 @pytest.fixture

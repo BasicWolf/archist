@@ -1,5 +1,5 @@
-from archist.provider.module import Module
 from archist.rule.source.modules import ModuleSource
+from helper import extracting_names_from
 
 
 def test_modules_source_yields_modules(build_basic_module):
@@ -7,9 +7,7 @@ def test_modules_source_yields_modules(build_basic_module):
         build_basic_module(module_name='first'),
         build_basic_module(module_name='second')
     ])
+
     modules = list(module_source)
-    assert ['first', 'second'] == extracting_module_names(modules)
 
-
-def extracting_module_names(modules: list[Module]) -> list[str]:
-    return [module.name for module in modules]
+    assert extracting_names_from(modules) == ['first', 'second']
