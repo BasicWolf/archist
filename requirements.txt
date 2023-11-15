@@ -3,4 +3,4 @@ mypy==1.7.0
 pyfakefs==5.3.0
 flake8==6.1.0
 pytest==7.4.3
-pyright==1.1.335
+pyright==1.1.336
